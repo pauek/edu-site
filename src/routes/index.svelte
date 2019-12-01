@@ -15,7 +15,7 @@
   let selected = -1;
 
   const assignaturaClick = index => ev => {
-    selected = index;
+    selected = (selected === index ? -1 : index)
   };
 
   let formIsOpen = false;
