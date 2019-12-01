@@ -27,7 +27,6 @@
   const openForm = () => (formIsOpen = true);
 
   const deleteCourse = course => async ev => {
-    console.log(`deleteCourse(${course.uid})`);
     const res = await fetch("/del-course.json", {
       method: "POST",
       body: JSON.stringify({ uid: course.uid }),
@@ -44,12 +43,9 @@
       body: JSON.stringify(novaAssignatura),
       headers: { "Content-Type": "application/json" }
     });
-    const json = await res.json();
-    assignatures = [...assignatures, novaAssignatura];
-    novaAssignatura = {
-      nom: "",
-      codi: 0
-    };
+    const { uid } = await res.json();
+    assignatures = [...assignatures, { ...novaAssignatura, uid }];
+    novaAssignatura = { nom: "", codi: 0 };
   };
 </script>
 
