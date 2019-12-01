@@ -27,14 +27,14 @@
   const openForm = () => (formIsOpen = true);
 
   const deleteCourse = course => async ev => {
-    console.log(`deleteCourse(${course.uid})`)
-    const res = await fetch('/del-course.json', {
+    console.log(`deleteCourse(${course.uid})`);
+    const res = await fetch("/del-course.json", {
       method: "POST",
       body: JSON.stringify({ uid: course.uid }),
       headers: { "Content-Type": "application/json" }
-    })
+    });
     const json = await res.json();
-    assignatures = assignatures.filter(c => c.uid !== course.uid)
+    assignatures = assignatures.filter(c => c.uid !== course.uid);
   };
 
   const submitForm = async () => {
@@ -121,7 +121,8 @@
 <div id="assignatures">
   {#each assignatures as a, i}
     <div
-      class="assignatura {i == selected ? 'selected' : ''}"
+      class="assignatura"
+      class:selected={i == selected}
       on:click={assignaturaClick(i)}>
       <span class="name">{a.nom}</span>
       <span class="code">{a.codi}</span>
