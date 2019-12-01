@@ -18,15 +18,13 @@ const query = async (query) => {
   }
 }
 
-const mutation = async (json) => {
-  console.log(`Mutation(${JSON.stringify(json)}`)
+const mutation = async (fn) => {
   const txn = client.newTxn()
   try {
     const mut = new dgraph.Mutation()
-    mut.setSetJson(json)
+    fn(mut)
     mut.setCommitNow(true)
     const res = await txn.mutate(mut)
-    // await txn.commit()
     return res.getUidsMap()
   }
   finally {
@@ -46,14 +44,17 @@ const getCourses = async () => {
   `)
 }
 
-const newCourse = async (course) => {
-  return mutation({
+const newCourse = async (course) =>
+  mutation((mut) => mut.setSetJson({
     ['dgraph.type']: "Assignatura",
     ...course,
-  })
-}
+  }))
+
+const delCourse = async (uid) =>
+  mutation((mut) => mut.setDelNquads(`<${uid}> * * .`))
 
 module.exports = {
   getCourses,
-  newCourse
+  newCourse,
+  delCourse,
 }
