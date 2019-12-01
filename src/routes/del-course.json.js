@@ -8,8 +8,6 @@ const sendJson = (res, obj) => {
 
 export async function post(req, res, next) {
   const { uid } = req.body
-  console.log(`del-course.json: ${uid}`)
-  const uidMap = await delCourse(uid)
-  console.log("uidMap", uidMap)
+  await delCourse(uid)
   sendJson(res, {})
 }
