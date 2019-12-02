@@ -11,11 +11,15 @@
 </script>
 
 <script>
+  import { goto } from "@sapper/app";
+
   export let assignatures = [];
   let selected = -1;
 
   const assignaturaClick = index => ev => {
-    selected = (selected === index ? -1 : index)
+    console.log(`Clicked ${assignatures[index].nom}`);
+    goto(`/assig/${assignatures[index].codi}`);
+    // selected = (selected === index ? -1 : index)
   };
 
   let formIsOpen = false;

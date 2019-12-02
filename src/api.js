@@ -44,6 +44,18 @@ const getCourses = async () => {
   `)
 }
 
+const getCourseByCodi = async (codi) => {
+  return query(`
+  {
+    assignatura(func: eq(codi, ${codi})) {
+      uid
+      nom
+      codi
+    }
+  }
+  `)
+}
+
 const newCourse = async (course) =>
   mutation((mut) => mut.setSetJson({
     ['dgraph.type']: "Assignatura",
@@ -55,6 +67,7 @@ const delCourse = async (uid) =>
 
 module.exports = {
   getCourses,
+  getCourseByCodi,
   newCourse,
   delCourse,
 }
