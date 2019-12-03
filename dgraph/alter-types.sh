@@ -1,9 +1,6 @@
 #!/bin/bash
-if [ -z $1 ]; then
-  echo "usage: $0 <file>"
-  exit 1
-fi
 curl localhost:8080/alter -XPOST -d $'
+
 nombre: string @index(term) .
 asignatura.codigo: int @index(int) .
 edicion: uid .
@@ -61,7 +58,7 @@ type Grupo {
   sesion: [uid]
 }
 
-fecha: dateTime .
+fecha: dateTime @index(day) .
 
 type Evaluacion {
   fecha: dateTime
@@ -102,11 +99,11 @@ type SesionEvaluacion {
   fecha: dateTime
 }
 
-valor: float .
+nota.valor: float @index(float) .
 persona: uid .
 
 type Nota {
-  valor: float
+  nota.valor: float
   sesion: uid
   persona: uid
 }
