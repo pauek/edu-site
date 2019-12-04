@@ -1,7 +1,9 @@
 <script>
   import { goto } from '@sapper/app'
+
   export let segment;
   export let acronym;
+  export let list;
 
   function segmentChange(ev) {
     goto(`/${ev.target.value}`)
@@ -69,8 +71,9 @@
   <ul>
     <li class="first">
       <select bind:value={acronym} on:change={segmentChange}>
-        <option value={"fi"}>FI - 2019T</option>
-        <option value={"edoo"}>EDOO - 2019T</option>
+      {#each list as option}
+        <option value={option}>{option}</option>
+      {/each}
       </select>
     </li>
     <li>

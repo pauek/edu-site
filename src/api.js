@@ -56,6 +56,14 @@ const getCourseByAcronym = async (acronym) => {
   }`)
 }
 
+const getAcronymList = async () => {
+  return query(`{
+    acronyms(func: type(Course)) {
+      acronym
+    }
+  }`)
+}
+
 const newCourse = async (course) =>
   mutation((mut) => mut.setSetJson({
     ['dgraph.type']: "Assignatura",
@@ -67,6 +75,7 @@ const delCourse = async (uid) =>
 
 module.exports = {
   getCourses,
+  getAcronymList,
   getCourseByAcronym,
   newCourse,
   delCourse,
