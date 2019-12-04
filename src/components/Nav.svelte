@@ -1,5 +1,10 @@
 <script>
+  import { goto } from '@sapper/app'
   export let segment;
+
+  function segmentChange(ev) {
+    goto(`/${ev.target.value}`)
+  }
 </script>
 
 <style>
@@ -55,9 +60,9 @@
 <nav>
   <ul>
     <li class="first">
-      <select>
-        <option>FI - 2019T</option>
-        <option>EDOO - 2019T</option>
+      <select on:change={segmentChange}>
+        <option value={"fi"}>FI - 2019T</option>
+        <option value={"edoo"}>EDOO - 2019T</option>
       </select>
     </li>
     <li>
