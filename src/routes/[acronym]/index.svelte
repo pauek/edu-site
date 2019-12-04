@@ -1,0 +1,33 @@
+<script context="module">
+  export async function preload(page, session) {
+    const { acronym } = page.params;
+    const res = await this.fetch(`/${acronym}/data.json`);
+    const json = await res.json();
+    console.log(json)
+    if (res.status === 200) {
+      return { course: json.course[0] };
+    } else {
+      this.error(res.status, json.message);
+    }
+  }
+</script>
+
+<script>
+  export let course;
+</script>
+
+<style>
+  h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+  }
+</style>
+
+<svelte:head>
+  <title>{course.acronym} - {course.name}</title>
+</svelte:head>
+
+<h1>{course.acronym} - {course.name}</h1>
+
+<p>{course.code}</p>

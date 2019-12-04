@@ -55,7 +55,10 @@
 <nav>
   <ul>
     <li class="first">
-      <a href="/">EduSite</a>
+      <select>
+        <option>FI - 2019T</option>
+        <option>EDOO - 2019T</option>
+      </select>
     </li>
     <li>
       <a class:selected={segment === undefined} href=".">inici</a>

@@ -1,8 +1,8 @@
 
 import { sendJson } from '../../util'
-import { getCourseByCodi } from '../../api'
+import { getCourseByAcronym } from '../../api'
 
 export async function get(req, res, next) {
   const { codi } = req.params;
-  sendJson(res, await getCourseByCodi(codi))
+  sendJson(res, await getCourseByAcronym(codi))
 }

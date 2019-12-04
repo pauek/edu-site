@@ -44,16 +44,16 @@ const getCourses = async () => {
   `)
 }
 
-const getCourseByCodi = async (codi) => {
-  return query(`
-  {
-    assignatura(func: eq(codi, ${codi})) {
+const getCourseByAcronym = async (acronym) => {
+  return query(`{
+    course(func: eq(acronym, ${acronym.toUpperCase()})) {
       uid
-      nom
-      codi
+      dgraph.type
+      name
+      acronym
+      course.code
     }
-  }
-  `)
+  }`)
 }
 
 const newCourse = async (course) =>
@@ -67,7 +67,7 @@ const delCourse = async (uid) =>
 
 module.exports = {
   getCourses,
-  getCourseByCodi,
+  getCourseByAcronym,
   newCourse,
   delCourse,
 }
