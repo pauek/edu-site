@@ -18,6 +18,8 @@
   ul {
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
   }
 
   /* clearfix */
@@ -54,7 +56,12 @@
   }
 
   .first {
-    margin-right: 2em;
+    margin-right: 1.5em;
+  }
+  .first select {
+    padding: .2em .4em;
+    border-radius: 4px;
+    background: white;
   }
 </style>
 
@@ -70,7 +77,10 @@
       <a class:selected={segment === undefined} href="/{acronym}">inici</a>
     </li>
     <li>
-      <a class:selected={segment === 'abcd'} href="/{acronym}/abcd">abcd</a>
+      <a class:selected={segment === 'tasks'} href="/{acronym}/tasks">tareas</a>
+    </li>
+    <li>
+      <a class:selected={segment === 'marks'} href="/{acronym}/marks">notas</a>
     </li>
   </ul>
 </nav>

@@ -3,7 +3,6 @@
     const { acronym } = page.params;
     const res = await this.fetch(`/${acronym}/data.json`);
     const json = await res.json();
-    console.log(json)
     if (res.status === 200) {
       return { course: json.course[0] };
     } else {
