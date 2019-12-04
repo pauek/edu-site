@@ -30,4 +30,4 @@
 
 <h1>{course.acronym} - {course.name}</h1>
 
-<p>{course.code}</p>
+<p>{course['course.code']}</p>
