@@ -12,7 +12,10 @@
 </script>
 
 <script>
+  import NewTask from "../../components/NewTask.svelte";
+
   export let course;
+
 </script>
 
 <style>
@@ -21,6 +24,7 @@
     font-weight: 700;
     margin: 0 0 0.5em 0;
   }
+  
 </style>
 
 <svelte:head>
@@ -29,4 +33,6 @@
 
 <h1>{course.acronym.toUpperCase()} - {course.name}</h1>
 
-<p>{course['course.code']}</p>
+<p>{course.code}</p>
+
+<NewTask />

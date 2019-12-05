@@ -48,10 +48,9 @@ const getCourseByAcronym = async (acronym) => {
   return query(`{
     course(func: eq(acronym, ${acronym})) {
       uid
-      dgraph.type
       name
       acronym
-      course.code
+      code : course.code
     }
   }`)
 }

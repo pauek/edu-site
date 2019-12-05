@@ -77,7 +77,7 @@
       </select>
     </li>
     <li>
-      <a class:selected={segment === undefined} href="/{acronym}">inici</a>
+      <a class:selected={segment === undefined} href="/{acronym}">agenda</a>
     </li>
     <li>
       <a class:selected={segment === 'tasks'} href="/{acronym}/tasks">tareas</a>
