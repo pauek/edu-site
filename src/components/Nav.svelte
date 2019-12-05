@@ -1,12 +1,18 @@
 <script>
-  import { goto } from '@sapper/app'
+  import { goto } from "@sapper/app";
+  import { editingTask } from "../store.js";
 
   export let segment;
   export let acronym;
   export let list;
 
   function segmentChange(ev) {
-    goto(`/${ev.target.value}`)
+    editingTask.update(task => ({ 
+      visible: false,
+      name: "",
+      date: new Date(),
+    }));
+    goto(`/${ev.target.value}`);
   }
 </script>
 
@@ -61,7 +67,7 @@
     margin-right: 1.5em;
   }
   .first select {
-    padding: .2em .4em;
+    padding: 0.2em 0.4em;
     border-radius: 4px;
     background: white;
   }
@@ -71,9 +77,9 @@
   <ul>
     <li class="first">
       <select bind:value={acronym} on:change={segmentChange}>
-      {#each list as option}
-        <option value={option}>{option.toUpperCase()}</option>
-      {/each}
+        {#each list as option}
+          <option value={option}>{option.toUpperCase()}</option>
+        {/each}
       </select>
     </li>
     <li>

@@ -1,27 +1,32 @@
 <script>
   import DatePicker from "./DatePicker.svelte";
+  import { editingTask } from "../store.js";
 
-  let newTask;
+  let task;
 
-  $: taskNotFilled = newTask && newTask.name === "";
+  const unsubscribe = editingTask.subscribe(value => {
+    task = value;
+  });
+
+  $: taskNotFilled = task && task.name === "";
 
   const addTask = () => {
-    newTask = {
-      name: "",
-      date: new Date()
-    };
+    editingTask.update(task => ({ ...task, visible: true }));
   };
 
   const submitTask = () => {
-    console.log("submitTask: " + JSON.stringify(newTask));
+    console.log("submitTask: " + JSON.stringify(task));
   };
 
   const cancelNewTask = () => {
-    newTask = null;
+    editingTask.update(task => ({ ...task, visible: false }));
   };
 
   const onDateChange = d => {
-    newTask.date = d.detail;
+    editingTask.update(task => ({
+      ...task,
+      date: d.detail
+    }));
   };
 </script>
 
@@ -48,13 +53,13 @@
   }
 </style>
 
-{#if newTask}
+{#if task.visible}
   <form on:submit|preventDefault={submitTask}>
     <h2>Nueva tarea</h2>
     <label>Nombre</label>
-    <input bind:value={newTask.name} />
+    <input bind:value={task.name} />
     <label>Fecha</label>
-    <DatePicker on:datechange={onDateChange} selected={newTask.date} />
+    <DatePicker on:datechange={onDateChange} selected={task.date} />
     <div>
       <button type="submit" disabled={taskNotFilled}>Añade</button>
       <button on:click={cancelNewTask}>Cancela</button>
