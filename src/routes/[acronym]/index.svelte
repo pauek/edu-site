@@ -27,6 +27,6 @@
   <title>{course.acronym} - {course.name}</title>
 </svelte:head>
 
-<h1>{course.acronym} - {course.name}</h1>
+<h1>{course.acronym.toUpperCase()} - {course.name}</h1>
 
 <p>{course['course.code']}</p>

@@ -4,12 +4,12 @@ curl -H "Content-Type: application/rdf" -X POST localhost:8080/mutate?commitNow=
   set {
     <_:fi> <dgraph.type> "Course" .
     <_:fi> <name> "Fonaments d\'Informàtica" .
-    <_:fi> <acronym> "FI" .
+    <_:fi> <acronym> "fi" .
     <_:fi> <course.code> "320095" .
 
     <_:edoo> <dgraph.type> "Course" .
     <_:edoo> <name> "Estructures de Dades i Orientació a Objectes" .
-    <_:edoo> <acronym> "EDOO" .
+    <_:edoo> <acronym> "edoo" .
     <_:edoo> <course.code> "320099" .
   }
 }

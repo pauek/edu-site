@@ -46,7 +46,7 @@ const getCourses = async () => {
 
 const getCourseByAcronym = async (acronym) => {
   return query(`{
-    course(func: eq(acronym, ${acronym.toUpperCase()})) {
+    course(func: eq(acronym, ${acronym})) {
       uid
       dgraph.type
       name

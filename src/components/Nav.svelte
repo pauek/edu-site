@@ -72,7 +72,7 @@
     <li class="first">
       <select bind:value={acronym} on:change={segmentChange}>
       {#each list as option}
-        <option value={option}>{option}</option>
+        <option value={option}>{option.toUpperCase()}</option>
       {/each}
       </select>
     </li>
