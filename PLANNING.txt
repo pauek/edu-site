@@ -1,0 +1,28 @@
+
+@funcionalidad
+  // Al empezar
+  - Clonar un curso anterior [hard].
+  - Definir los pesos de las notas (y qué exámenes hay).
+  - Añadir una sección.
+  - Colgar ficheros generales (que no dependen del timeline, como la guia docente).
+
+  // Durante el curso
+  - Añadir una sesión (clase o exámen/control o recordatorio de festivo).
+  - Añadir material a una sesión (código, ZIP, PDF, transparencias).
+    (notificaciones automáticas).
+  - Enviar un mensaje a todo el mundo (broadcast).
+
+  // Tareas
+  - Añadir una tarea (fecha inicial+final o semana, tipo y número de ficheros o links)
+  - Descargar todas las tareas.
+  - Puntuar cada tarea.
+  - Notificar la puntuación de las tareas.
+
+  // Proyecto
+  - Añadir una entrega al proyecto.
+  - Descargar todas las entregas.
+  - Puntuar cada entrega.
+
+  // Exámenes
+  [- Definir la fecha de un exámen (crear una sesión).]
+  - Puntuar exámenes.
